@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!--
+  mule-email-api | default-branch: main | SCENARIO: already has NEW pattern
+  Expected: SKIPPED — already up-to-date (idempotent)
+-->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"           value="${app.home}/logs/mule-email-api.log"/>
+        <param name="MaxFileSize"    value="10MB"/>
+        <param name="MaxBackupIndex" value="10"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} %-5level [%thread] %logger{36} - %msg%n"/>
+        </layout>
+    </appender>
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</log4j:configuration>
